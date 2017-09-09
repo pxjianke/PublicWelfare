@@ -19,7 +19,7 @@
     <artifactId>PublicWelfare_service</artifactId>  
     <version>0.0.1-SNAPSHOT</version>  
     <classifier>jar</classifier>  
-    <scope>runtime</scope>  
+    <scope>runtime</scope>   
     </dependency> 
   </dependencies>
   <build>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.welfare.dao.NavListDao">
+    <resultMap type="com.welfare.entity.NavList" id="navListMappring">
+        <id property="id" column="id" javaType="java.lang.Integer" jdbcType="INTEGER"/> 
+        <id property="text" column="text" javaType="java.lang.String" jdbcType="VARCHAR"/> 
+        <id property="createTime" column="create_time" javaType="java.util.Date" jdbcType="DATE"/> 
+        <collection property="nvaListTitle" ofType="com.welfare.entity.NvaListTitle">  
+         <id property="id" column="wtid" javaType="java.lang.Integer" jdbcType="INTEGER"/>  
+        <result property="text" column="wttext" javaType="java.lang.String" jdbcType="VARCHAR"/>  
+          <collection property="nvaListList" ofType="com.welfare.entity.NvaListList">  
+           <id property="id" column="wlid" javaType="java.lang.Integer" jdbcType="INTEGER"/>  
+          <result property="text" column="wltext" javaType="java.lang.String" jdbcType="VARCHAR"/>  
+        </collection>
+        </collection>
+        
+     </resultMap>
+     <select id="findAll" resultMap="navListMappring">
+      select wm.id id,wm.text text,wt.id wtid,wt.text wttext,wl.id wlid,wl.text wltext from welfare_menu wm 
+      left join welfare_menu_title_list wmtl on wm.id = wmtl.menu_Id 
+      left join welfare_title wt on wt.id = wmtl.title_menudId 
+      left join welfare_list wl on wmtl.list_menuId = wl.id
+     </select>  
+</mapper>

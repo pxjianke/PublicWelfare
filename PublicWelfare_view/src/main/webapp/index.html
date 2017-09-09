@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/public/jquery/jquery-3.2.1.min.js"></script>
+<script>
+  $(function(){
+    $.ajax({
+             type: "GET",
+             url: "http://localhost:8080/PublicWelfare_controller/index.do",
+             success: function(data){
+                         alert(data);
+                      },
+             error:function(){
+               alert("==============");
+             }
+         });
+  })
+</script>
+</head>
+<body>
+  <h1>helloworld</h1>
+</body>
+</html>
